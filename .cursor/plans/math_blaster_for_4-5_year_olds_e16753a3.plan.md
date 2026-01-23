@@ -148,11 +148,11 @@ graph TD
 **Features:**
 
 - **Help Button**: Large, always-visible help button that provides hints
-                - Counting: "Let's count together! Tap each item once."
-                - Addition: "Count the first group, then the second group, then add them!"
-                - Subtraction: "Start with the big number, then take away the small number."
+                                                                                                                                                                                                                                                                - Counting: "Let's count together! Tap each item once."
+                                                                                                                                                                                                                                                                - Addition: "Count the first group, then the second group, then add them!"
+                                                                                                                                                                                                                                                                - Subtraction: "Start with the big number, then take away the small number."
 - **Encouraging Feedback**: Varied messages instead of just "Correct!"
-                - "Awesome! 🌟", "You're a math star! ⭐", "Perfect! 🎉", "Great counting! 🔢"
+                                                                                                                                                                                                                                                                - "Awesome! 🌟", "You're a math star! ⭐", "Perfect! 🎉", "Great counting! 🔢"
 - **After Mistakes**: Automatically show easier question next
 - **Visual Hints**: Subtle animations that guide attention
 
@@ -169,10 +169,10 @@ graph TD
 
 - **Welcome Screen**: Friendly character introduces the game
 - **Interactive Tutorial**: 
-                - Step 1: "Tap the colorful buttons to choose a game!"
-                - Step 2: "Count the animals by tapping them!"
-                - Step 3: "Choose your answer from the big buttons!"
-                - Step 4: "Great job! You're ready to play!"
+                                                                                                                                                                                                                                                                - Step 1: "Tap the colorful buttons to choose a game!"
+                                                                                                                                                                                                                                                                - Step 2: "Count the animals by tapping them!"
+                                                                                                                                                                                                                                                                - Step 3: "Choose your answer from the big buttons!"
+                                                                                                                                                                                                                                                                - Step 4: "Great job! You're ready to play!"
 - **Skip Option**: For returning players or if child wants to explore
 - **Progress Indicator**: Show which step they're on
 
@@ -364,23 +364,23 @@ This plan focuses specifically on 4-5 year olds with features that address their
 
 1. **State Management Strategy**
 
-                        - **Current**: Local component state + localStorage
-                        - **Recommendation**: Consider Context API or Zustand for:
-                                        - Session state (shared across components)
-                                        - Difficulty state (needs to persist across game modes)
-                                        - Progress state (accessed by multiple components)
-                        - **Why**: As features grow, prop drilling becomes problematic. Centralized state makes session management and difficulty tracking easier.
+                                                                                                                                                                                                                                                                                                                                                                                                - **Current**: Local component state + localStorage
+                                                                                                                                                                                                                                                                                                                                                                                                - **Recommendation**: Consider Context API or Zustand for:
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - Session state (shared across components)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - Difficulty state (needs to persist across game modes)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - Progress state (accessed by multiple components)
+                                                                                                                                                                                                                                                                                                                                                                                                - **Why**: As features grow, prop drilling becomes problematic. Centralized state makes session management and difficulty tracking easier.
 
 2. **Component Architecture**
 
-                        - **Current**: Mix of class and functional components
-                        - **Recommendation**: Migrate to functional components with hooks for consistency
-                        - **Why**: Hooks provide better composition, easier testing, and align with React best practices. The Game component should be refactored to use hooks.
+                                                                                                                                                                                                                                                                                                                                                                                                - **Current**: Mix of class and functional components
+                                                                                                                                                                                                                                                                                                                                                                                                - **Recommendation**: Migrate to functional components with hooks for consistency
+                                                                                                                                                                                                                                                                                                                                                                                                - **Why**: Hooks provide better composition, easier testing, and align with React best practices. The Game component should be refactored to use hooks.
 
 3. **Data Persistence Layer**
 
-                        - **Current**: Direct localStorage calls in utility functions
-                        - **Recommendation**: Create a data access layer abstraction:
+                                                                                                                                                                                                                                                                                                                                                                                                - **Current**: Direct localStorage calls in utility functions
+                                                                                                                                                                                                                                                                                                                                                                                                - **Recommendation**: Create a data access layer abstraction:
      ```typescript
      // utils/storage.ts - Abstraction layer
      export interface StorageAdapter {
@@ -390,17 +390,17 @@ This plan focuses specifically on 4-5 year olds with features that address their
      }
      ```
 
-                        - **Why**: Makes it easier to swap localStorage for IndexedDB (for larger data) or backend API later. Also enables better error handling and data validation.
+                                                                                                                                                                                                                                                                                                                                                                                                - **Why**: Makes it easier to swap localStorage for IndexedDB (for larger data) or backend API later. Also enables better error handling and data validation.
 
 4. **Type Safety**
 
-                        - **Current**: Basic TypeScript types
-                        - **Recommendation**: Create comprehensive type definitions:
-                                        - `types/game.ts` - Game modes, question types
-                                        - `types/difficulty.ts` - Difficulty levels and state
-                                        - `types/session.ts` - Session data structures
-                                        - `types/progress.ts` - Progress tracking types
-                        - **Why**: Better IDE support, catch errors at compile time, self-documenting code.
+                                                                                                                                                                                                                                                                                                                                                                                                - **Current**: Basic TypeScript types
+                                                                                                                                                                                                                                                                                                                                                                                                - **Recommendation**: Create comprehensive type definitions:
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - `types/game.ts` - Game modes, question types
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - `types/difficulty.ts` - Difficulty levels and state
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - `types/session.ts` - Session data structures
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - `types/progress.ts` - Progress tracking types
+                                                                                                                                                                                                                                                                                                                                                                                                - **Why**: Better IDE support, catch errors at compile time, self-documenting code.
 
 ### Frontend Architecture Expansion
 
@@ -564,39 +564,39 @@ const MemoizedProgressTracker = memo(ProgressTracker);
 
 1. **Multi-Device Sync**
 
-                        - **Use Case**: Child plays on tablet at home, continues on parent's phone
-                        - **Backend Requirements**:
-                                        - User accounts (anonymous or parent-managed)
-                                        - Data synchronization API
-                                        - Conflict resolution (last-write-wins or merge strategy)
-                        - **Technology**: REST API or GraphQL, database (PostgreSQL/MongoDB)
+                                                                                                                                                                                                                                                                                                                                                                                                - **Use Case**: Child plays on tablet at home, continues on parent's phone
+                                                                                                                                                                                                                                                                                                                                                                                                - **Backend Requirements**:
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - User accounts (anonymous or parent-managed)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - Data synchronization API
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - Conflict resolution (last-write-wins or merge strategy)
+                                                                                                                                                                                                                                                                                                                                                                                                - **Technology**: REST API or GraphQL, database (PostgreSQL/MongoDB)
 
 2. **Parent Dashboard/Analytics**
 
-                        - **Use Case**: Parents want to see progress, time spent, areas needing help
-                        - **Backend Requirements**:
-                                        - Analytics aggregation
-                                        - Reporting API
-                                        - Data visualization endpoints
-                        - **Technology**: Analytics service (Mixpanel, Amplitude) or custom analytics API
+                                                                                                                                                                                                                                                                                                                                                                                                - **Use Case**: Parents want to see progress, time spent, areas needing help
+                                                                                                                                                                                                                                                                                                                                                                                                - **Backend Requirements**:
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - Analytics aggregation
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - Reporting API
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - Data visualization endpoints
+                                                                                                                                                                                                                                                                                                                                                                                                - **Technology**: Analytics service (Mixpanel, Amplitude) or custom analytics API
 
 3. **Content Management**
 
-                        - **Use Case**: Update questions, add new game modes without app update
-                        - **Backend Requirements**:
-                                        - Content API
-                                        - Admin dashboard
-                                        - Versioning system
-                        - **Technology**: Headless CMS (Contentful, Strapi) or custom CMS
+                                                                                                                                                                                                                                                                                                                                                                                                - **Use Case**: Update questions, add new game modes without app update
+                                                                                                                                                                                                                                                                                                                                                                                                - **Backend Requirements**:
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - Content API
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - Admin dashboard
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - Versioning system
+                                                                                                                                                                                                                                                                                                                                                                                                - **Technology**: Headless CMS (Contentful, Strapi) or custom CMS
 
 4. **Social Features (Future)**
 
-                        - **Use Case**: Share achievements, compare with friends (with parent approval)
-                        - **Backend Requirements**:
-                                        - User profiles
-                                        - Friend connections
-                                        - Privacy controls
-                        - **Technology**: Full backend with authentication, social graph
+                                                                                                                                                                                                                                                                                                                                                                                                - **Use Case**: Share achievements, compare with friends (with parent approval)
+                                                                                                                                                                                                                                                                                                                                                                                                - **Backend Requirements**:
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - User profiles
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - Friend connections
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - Privacy controls
+                                                                                                                                                                                                                                                                                                                                                                                                - **Technology**: Full backend with authentication, social graph
 
 #### Backend Architecture (If Implemented)
 
@@ -770,37 +770,37 @@ interface SessionSummary {
 - **Target**: Utility functions, hooks, pure functions
 - **Tools**: Jest + React Testing Library
 - **Examples**:
-                - `difficultyManager.ts` - Test difficulty adjustment logic
-                - `sessionManager.ts` - Test session timing and break points
-                - `progress.ts` - Test progress calculations
-                - Custom hooks - Test state management
+                                                                                                                                                                                                                                                                - `difficultyManager.ts` - Test difficulty adjustment logic
+                                                                                                                                                                                                                                                                - `sessionManager.ts` - Test session timing and break points
+                                                                                                                                                                                                                                                                - `progress.ts` - Test progress calculations
+                                                                                                                                                                                                                                                                - Custom hooks - Test state management
 
 **2. Component Tests**
 
 - **Target**: React components
 - **Tools**: Jest + React Testing Library
 - **Examples**:
-                - Game components render correctly
-                - Help system shows appropriate hints
-                - Celebration system triggers at milestones
-                - Onboarding flow works step-by-step
+                                                                                                                                                                                                                                                                - Game components render correctly
+                                                                                                                                                                                                                                                                - Help system shows appropriate hints
+                                                                                                                                                                                                                                                                - Celebration system triggers at milestones
+                                                                                                                                                                                                                                                                - Onboarding flow works step-by-step
 
 **3. Integration Tests**
 
 - **Target**: User flows
 - **Tools**: Jest + React Testing Library (or Playwright)
 - **Examples**:
-                - Complete onboarding → select game → play → see progress
-                - Session management: start → 5 min break → 10 min end
-                - Difficulty adjustment: answer correctly → difficulty increases
+                                                                                                                                                                                                                                                                - Complete onboarding → select game → play → see progress
+                                                                                                                                                                                                                                                                - Session management: start → 5 min break → 10 min end
+                                                                                                                                                                                                                                                                - Difficulty adjustment: answer correctly → difficulty increases
 
 **4. E2E Tests (Optional)**
 
 - **Target**: Full user journeys
 - **Tools**: Playwright or Cypress
 - **Examples**:
-                - First-time user completes onboarding and plays a game
-                - Returning user resumes session and sees progress
+                                                                                                                                                                                                                                                                - First-time user completes onboarding and plays a game
+                                                                                                                                                                                                                                                                - Returning user resumes session and sees progress
 
 #### Testing Priorities
 
@@ -836,19 +836,19 @@ class ErrorBoundary extends React.Component {
 
 1. **localStorage Failures**: 
 
-                        - Handle quota exceeded errors
-                        - Fall back to in-memory storage
-                        - Show warning to user
+                                                                                                                                                                                                                                                                                                                                                                                                - Handle quota exceeded errors
+                                                                                                                                                                                                                                                                                                                                                                                                - Fall back to in-memory storage
+                                                                                                                                                                                                                                                                                                                                                                                                - Show warning to user
 
 2. **Audio Failures**:
 
-                        - AudioManager already handles missing files
-                        - Continue game without sound if needed
+                                                                                                                                                                                                                                                                                                                                                                                                - AudioManager already handles missing files
+                                                                                                                                                                                                                                                                                                                                                                                                - Continue game without sound if needed
 
 3. **Network Failures** (if backend added):
 
-                        - Offline mode with local storage
-                        - Sync when connection restored
+                                                                                                                                                                                                                                                                                                                                                                                                - Offline mode with local storage
+                                                                                                                                                                                                                                                                                                                                                                                                - Sync when connection restored
 
 ### Performance Monitoring
 
@@ -873,18 +873,18 @@ class ErrorBoundary extends React.Component {
 
 1. **XSS Prevention**: 
 
-                        - Sanitize any user-generated content (if added)
-                        - Use React's built-in XSS protection (auto-escaping)
+                                                                                                                                                                                                                                                                                                                                                                                                - Sanitize any user-generated content (if added)
+                                                                                                                                                                                                                                                                                                                                                                                                - Use React's built-in XSS protection (auto-escaping)
 
 2. **localStorage Security**:
 
-                        - No sensitive data (no PII)
-                        - Data is device-local only
+                                                                                                                                                                                                                                                                                                                                                                                                - No sensitive data (no PII)
+                                                                                                                                                                                                                                                                                                                                                                                                - Data is device-local only
 
 3. **Dependency Security**:
 
-                        - Regular `npm audit` checks
-                        - Keep dependencies updated
+                                                                                                                                                                                                                                                                                                                                                                                                - Regular `npm audit` checks
+                                                                                                                                                                                                                                                                                                                                                                                                - Keep dependencies updated
 
 #### Privacy Considerations
 
@@ -1078,34 +1078,34 @@ const hints = {
 
 1. **Welcome Screen**
 
-                        - Friendly character/mascot introduction
-                        - "Welcome to Math Blaster!"
-                        - Large "Let's Start!" button
+                                                                                                                                                                                                                                                                                                                                                                                                - Friendly character/mascot introduction
+                                                                                                                                                                                                                                                                                                                                                                                                - "Welcome to Math Blaster!"
+                                                                                                                                                                                                                                                                                                                                                                                                - Large "Let's Start!" button
 
 2. **Step 1: Game Selection**
 
-                        - Highlight game mode buttons
-                        - "Tap a colorful button to choose a game!"
-                        - Wait for user to tap (but don't actually start game)
+                                                                                                                                                                                                                                                                                                                                                                                                - Highlight game mode buttons
+                                                                                                                                                                                                                                                                                                                                                                                                - "Tap a colorful button to choose a game!"
+                                                                                                                                                                                                                                                                                                                                                                                                - Wait for user to tap (but don't actually start game)
 
 3. **Step 2: Counting Tutorial**
 
-                        - Show simplified counting game
-                        - "Count the animals by tapping them!"
-                        - Guide through one counting example
-                        - Show correct answer selection
+                                                                                                                                                                                                                                                                                                                                                                                                - Show simplified counting game
+                                                                                                                                                                                                                                                                                                                                                                                                - "Count the animals by tapping them!"
+                                                                                                                                                                                                                                                                                                                                                                                                - Guide through one counting example
+                                                                                                                                                                                                                                                                                                                                                                                                - Show correct answer selection
 
 4. **Step 3: Answer Selection**
 
-                        - "Choose your answer from the big buttons!"
-                        - Highlight answer buttons
-                        - Show feedback when correct answer selected
+                                                                                                                                                                                                                                                                                                                                                                                                - "Choose your answer from the big buttons!"
+                                                                                                                                                                                                                                                                                                                                                                                                - Highlight answer buttons
+                                                                                                                                                                                                                                                                                                                                                                                                - Show feedback when correct answer selected
 
 5. **Completion**
 
-                        - "Great job! You're ready to play!"
-                        - Celebration animation
-                        - "Start Playing" button
+                                                                                                                                                                                                                                                                                                                                                                                                - "Great job! You're ready to play!"
+                                                                                                                                                                                                                                                                                                                                                                                                - Celebration animation
+                                                                                                                                                                                                                                                                                                                                                                                                - "Start Playing" button
 
 **Implementation:**
 
@@ -1130,37 +1130,37 @@ const hints = {
 
 1. **Confetti Burst** (every answer)
 
-                        - Small particles, quick animation (1-2 seconds)
-                        - Doesn't block gameplay
+                                                                                                                                                                                                                                                                                                                                                                                                - Small particles, quick animation (1-2 seconds)
+                                                                                                                                                                                                                                                                                                                                                                                                - Doesn't block gameplay
 
 2. **Sticker Reward** (every 3)
 
-                        - Sticker appears with bounce animation
-                        - Collectible sticker shown
-                        - "Great job!" message
+                                                                                                                                                                                                                                                                                                                                                                                                - Sticker appears with bounce animation
+                                                                                                                                                                                                                                                                                                                                                                                                - Collectible sticker shown
+                                                                                                                                                                                                                                                                                                                                                                                                - "Great job!" message
 
 3. **Star Celebration** (every 5)
 
-                        - Star appears with sparkle effect
-                        - "You're a star!" message
-                        - Star added to progress tracker
+                                                                                                                                                                                                                                                                                                                                                                                                - Star appears with sparkle effect
+                                                                                                                                                                                                                                                                                                                                                                                                - "You're a star!" message
+                                                                                                                                                                                                                                                                                                                                                                                                - Star added to progress tracker
 
 4. **Trophy Celebration** (every 10)
 
-                        - Full-screen celebration modal
-                        - Trophy animation
-                        - "Amazing work!" message
-                        - Can dismiss after 3 seconds
+                                                                                                                                                                                                                                                                                                                                                                                                - Full-screen celebration modal
+                                                                                                                                                                                                                                                                                                                                                                                                - Trophy animation
+                                                                                                                                                                                                                                                                                                                                                                                                - "Amazing work!" message
+                                                                                                                                                                                                                                                                                                                                                                                                - Can dismiss after 3 seconds
 
 5. **Session End Celebration**
 
-                        - Summary screen showing:
-                                        - Total questions answered
-                                        - Correct answers
-                                        - Stars earned
-                                        - Time played
-                        - "You did great today!" message
-                        - Option to play again or take a break
+                                                                                                                                                                                                                                                                                                                                                                                                - Summary screen showing:
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - Total questions answered
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - Correct answers
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - Stars earned
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                - Time played
+                                                                                                                                                                                                                                                                                                                                                                                                - "You did great today!" message
+                                                                                                                                                                                                                                                                                                                                                                                                - Option to play again or take a break
 
 **Animation Library:**
 
@@ -1189,14 +1189,14 @@ const hints = {
    ```
 
 
-                        - **Pros**: Related code grouped together
-                        - **Cons**: More restructuring needed
+                                                                                                                                                                                                                                                                                                                                                                                                - **Pros**: Related code grouped together
+                                                                                                                                                                                                                                                                                                                                                                                                - **Cons**: More restructuring needed
 
 2. **Current Structure** (Keep but enhance):
 
-                        - Keep `components/`, `utils/`, `types/` separation
-                        - Add `hooks/` directory for custom hooks
-                        - Add `contexts/` directory for React contexts
+                                                                                                                                                                                                                                                                                                                                                                                                - Keep `components/`, `utils/`, `types/` separation
+                                                                                                                                                                                                                                                                                                                                                                                                - Add `hooks/` directory for custom hooks
+                                                                                                                                                                                                                                                                                                                                                                                                - Add `contexts/` directory for React contexts
 
 ### Git Workflow
 
@@ -1252,35 +1252,35 @@ When enhancing progress structure:
 
 1. **Engagement**:
 
-                        - Average session duration (target: 8-10 minutes)
-                        - Questions per session (target: 15-25)
-                        - Return rate (target: daily usage)
+                                                                                                                                                                                                                                                                                                                                                                                                - Average session duration (target: 8-10 minutes)
+                                                                                                                                                                                                                                                                                                                                                                                                - Questions per session (target: 15-25)
+                                                                                                                                                                                                                                                                                                                                                                                                - Return rate (target: daily usage)
 
 2. **Learning Effectiveness**:
 
-                        - Difficulty progression (are children advancing?)
-                        - Accuracy rate (target: 70-80% correct)
-                        - Help system usage (are hints helpful?)
+                                                                                                                                                                                                                                                                                                                                                                                                - Difficulty progression (are children advancing?)
+                                                                                                                                                                                                                                                                                                                                                                                                - Accuracy rate (target: 70-80% correct)
+                                                                                                                                                                                                                                                                                                                                                                                                - Help system usage (are hints helpful?)
 
 3. **Frustration Prevention**:
 
-                        - Abandonment rate (sessions ended early)
-                        - Help button clicks (indicates confusion)
-                        - Difficulty decreases (indicates too hard)
+                                                                                                                                                                                                                                                                                                                                                                                                - Abandonment rate (sessions ended early)
+                                                                                                                                                                                                                                                                                                                                                                                                - Help button clicks (indicates confusion)
+                                                                                                                                                                                                                                                                                                                                                                                                - Difficulty decreases (indicates too hard)
 
 ### Technical Metrics
 
 1. **Performance**:
 
-                        - Page load time < 2 seconds
-                        - Interaction latency < 100ms
-                        - Animation FPS > 55fps
+                                                                                                                                                                                                                                                                                                                                                                                                - Page load time < 2 seconds
+                                                                                                                                                                                                                                                                                                                                                                                                - Interaction latency < 100ms
+                                                                                                                                                                                                                                                                                                                                                                                                - Animation FPS > 55fps
 
 2. **Reliability**:
 
-                        - No crashes (error boundary catches all)
-                        - Data persistence success rate > 99%
-                        - localStorage quota management
+                                                                                                                                                                                                                                                                                                                                                                                                - No crashes (error boundary catches all)
+                                                                                                                                                                                                                                                                                                                                                                                                - Data persistence success rate > 99%
+                                                                                                                                                                                                                                                                                                                                                                                                - localStorage quota management
 
 ---
 
